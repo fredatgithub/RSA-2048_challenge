@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -733,7 +734,61 @@ namespace GetPrimeFiles
       //up to
       //https://primes.utm.edu/lists/small/millions/primes50.zip
       //download and unzip
+      string extensionName = ".zip";
+      string fileNameNumbered = "primes";
+      string finalFileName = $"{fileNameNumbered}1{extensionName}";
+      string url = $"https://primes.utm.edu/lists/small/millions/{finalFileName}";
+      bool resultOk = GetWebClientBinaries(url, finalFileName);
+      string messageToDisplay = $"The file has {Negate(resultOk)}been downloaded correctly";
+      string titleToDisplay = $"Download {Negate(resultOk)}ok";
+      DisplayMessage(messageToDisplay, titleToDisplay, MessageBoxButtons.OK);
+      
+    }
 
+    private static string Negate(bool negativeValue)
+    {
+      return negativeValue ? string.Empty : $"not ";
+    }
+
+    private static bool GetWebClientBinaries(string url = "http://www.google.com/",
+      string fileName = "untitled-file.pdf")
+    {
+      WebClient client = new WebClient();
+      bool result = false;
+      // set the user agent to IE6
+      client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.0.3705;)");
+      try
+      {
+        client.DownloadFile(url, fileName);
+        result = true;
+      }
+      catch (WebException we)
+      {
+        //Console.WriteLine(we.Message + "\n" + we.Status);
+        result = false;
+      }
+      catch (NotSupportedException ne)
+      {
+        //Console.WriteLine(ne.Message);
+        result = false;
+      }
+
+      return result;
+    }
+
+    private static bool IsInternetConnected()
+    {
+      HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://www.google.fr");
+
+      try
+      {
+        HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+        return true;
+      }
+      catch (Exception)
+      {
+        return false;
+      }
     }
   }
 }
