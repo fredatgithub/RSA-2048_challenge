@@ -1,23 +1,4 @@
-﻿/*
-The MIT License(MIT)
-Copyright(c) 2015 Freddy Juhel
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
-#define DEBUG
+﻿#define DEBUG
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -28,6 +9,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using GetPrimeFiles.Properties;
+using Ionic.Zip;
 
 namespace GetPrimeFiles
 {
@@ -738,15 +720,53 @@ namespace GetPrimeFiles
       string fileNameNumbered = "primes";
       string finalFileName = $"{fileNameNumbered}1{extensionName}";
       string url = $"https://primes.utm.edu/lists/small/millions/{finalFileName}";
-      bool resultOk = GetWebClientBinaries(url, finalFileName);
-      string messageToDisplay = $"The file has {Negate(resultOk)}been downloaded correctly";
-      string titleToDisplay = $"Download {Negate(resultOk)}ok";
+      bool result = GetWebClientBinaries(url, finalFileName);
+      string messageToDisplay = $"The file has {NegateIfNeeded(result)}been downloaded correctly";
+      string titleToDisplay = $"Download {NegateIfNeeded(result)}ok";
       DisplayMessage(messageToDisplay, titleToDisplay, MessageBoxButtons.OK);
       //unziping
-
+      bool resultUnzip = UnzipFile();
     }
 
-    private static string Negate(bool negativeValue)
+    private static bool UnzipFile(string zipFileName, DirectoryInfo directory)
+    {
+      //Try
+      //  Using zip As ZipFile = ZipFile.Read(zipToRead)
+      //totalEntriesToProcess = zip.Entries.Count
+      //SetProgressBarMax(zip.Entries.Count)
+      //AddHandler zip.ExtractProgress, New EventHandler(Of ExtractProgressEventArgs)(AddressOf Me.zip_ExtractProgress)
+      //zip.ExtractAll(extractDir, Ionic.Zip.ExtractExistingFileAction.OverwriteSilently)
+      //End Using
+      //Catch ex1 As Exception
+      //MessageBox.Show(String.Format("There's been a problem extracting that zip file.  {0}", ex1.Message), "Error Extracting", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+      //End Try
+      bool result = false;
+      try
+      {
+        string zipToUnpack = "C1P3SML.zip";
+        string unpackDirectory = "Extracted Files";
+        using (ZipFile zip1 = ZipFile.Read(zipFileName))
+        {
+          // here, we extract every entry, but we could extract conditionally
+          // based on entry name, size, date, checkbox status, etc.  
+          foreach (ZipEntry file in zip1)
+          {
+            file.Extract(directory.Name, ExtractExistingFileAction.OverwriteSilently);
+          }
+        }
+
+        result = true;
+      }
+      catch (Exception exception)
+      {
+        MessageBox.Show(exception.Message);
+        return false;
+      }
+
+      return result;
+    }
+
+    private static string NegateIfNeeded(bool negativeValue)
     {
       return negativeValue ? string.Empty : $"not ";
     }
