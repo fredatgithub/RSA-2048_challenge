@@ -725,5 +725,15 @@ namespace GetPrimeFiles
         // do something
       }
     }
+
+    private void buttonGetFiles_Click(object sender, EventArgs e)
+    {
+      // get prime files
+      // get https://primes.utm.edu/lists/small/millions/primes1.zip
+      //up to
+      //https://primes.utm.edu/lists/small/millions/primes50.zip
+      //download and unzip
+
+    }
   }
 }

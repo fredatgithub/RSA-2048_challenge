@@ -65,6 +65,9 @@
       this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
       this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.labelUrl = new System.Windows.Forms.Label();
+      this.textBoxUrl = new System.Windows.Forms.TextBox();
+      this.buttonGetFiles = new System.Windows.Forms.Button();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -278,14 +281,14 @@
       this.frenchToolStripMenuItem.Checked = true;
       this.frenchToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
       this.frenchToolStripMenuItem.Name = "frenchToolStripMenuItem";
-      this.frenchToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+      this.frenchToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
       this.frenchToolStripMenuItem.Text = "Français";
       this.frenchToolStripMenuItem.Click += new System.EventHandler(this.FrenchToolStripMenuItemClick);
       // 
       // englishToolStripMenuItem
       // 
       this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-      this.englishToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+      this.englishToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
       this.englishToolStripMenuItem.Text = "Anglais";
       this.englishToolStripMenuItem.Click += new System.EventHandler(this.EnglishToolStripMenuItemClick);
       // 
@@ -364,16 +367,47 @@
       this.aboutToolStripMenuItem.Text = "À &propos de...";
       this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItemClick);
       // 
+      // labelUrl
+      // 
+      this.labelUrl.AutoSize = true;
+      this.labelUrl.Location = new System.Drawing.Point(50, 81);
+      this.labelUrl.Name = "labelUrl";
+      this.labelUrl.Size = new System.Drawing.Size(36, 17);
+      this.labelUrl.TabIndex = 2;
+      this.labelUrl.Text = "URL";
+      // 
+      // textBoxUrl
+      // 
+      this.textBoxUrl.Location = new System.Drawing.Point(108, 81);
+      this.textBoxUrl.Name = "textBoxUrl";
+      this.textBoxUrl.Size = new System.Drawing.Size(622, 22);
+      this.textBoxUrl.TabIndex = 3;
+      this.textBoxUrl.Text = "https://primes.utm.edu/lists/small/millions/";
+      // 
+      // buttonGetFiles
+      // 
+      this.buttonGetFiles.Location = new System.Drawing.Point(783, 76);
+      this.buttonGetFiles.Name = "buttonGetFiles";
+      this.buttonGetFiles.Size = new System.Drawing.Size(97, 32);
+      this.buttonGetFiles.TabIndex = 4;
+      this.buttonGetFiles.Text = "Get Files";
+      this.buttonGetFiles.UseVisualStyleBackColor = true;
+      this.buttonGetFiles.Click += new System.EventHandler(this.buttonGetFiles_Click);
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(911, 534);
+      this.Controls.Add(this.buttonGetFiles);
+      this.Controls.Add(this.textBoxUrl);
+      this.Controls.Add(this.labelUrl);
       this.Controls.Add(this.menuStrip1);
       this.MainMenuStrip = this.menuStrip1;
       this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.Name = "FormMain";
       this.ShowIcon = false;
+      this.Text = "Get prime files";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMainFormClosing);
       this.Load += new System.EventHandler(this.FormMainLoad);
       this.menuStrip1.ResumeLayout(false);
@@ -422,5 +456,8 @@
     private System.Windows.Forms.ToolStripMenuItem SmallToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem MediumToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem LargeToolStripMenuItem;
+    private System.Windows.Forms.Label labelUrl;
+    private System.Windows.Forms.TextBox textBoxUrl;
+    private System.Windows.Forms.Button buttonGetFiles;
   }
 }
