@@ -719,24 +719,27 @@ namespace GetPrimeFiles
       string extensionName = ".zip";
       string fileNameNumbered = "primes";
       // for loop to insert here
-      int i = 1;
-      string finalFileName = $"{fileNameNumbered}{i}{extensionName}";
-      string url = $"https://primes.utm.edu/lists/small/millions/{finalFileName}";
-      //test if file doesn't already exist
-      if (!File.Exists(finalFileName))
+      string finalFileName = string.Empty;
+      string url = string.Empty;
+      for (int j = 1; j < 51; j++)
       {
-        bool result = GetWebClientBinaries(url, finalFileName);
-        string messageToDisplay = $"The file has {NegateIfNeeded(result)}been downloaded correctly";
-        string titleToDisplay = $"Download {NegateIfNeeded(result)}ok";
-        DisplayMessage(messageToDisplay, titleToDisplay, MessageBoxButtons.OK);
-      }
-      
-      //unziping
-      if (File.Exists(finalFileName))
-      {
-        bool resultUnzip = UnzipFile(finalFileName, new DirectoryInfo(finalFileName));
-      }
-      
+        finalFileName = $"{fileNameNumbered}{j}{extensionName}";
+        url = $"https://primes.utm.edu/lists/small/millions/{finalFileName}";
+        //test if file doesn't already exist
+        if (!File.Exists(finalFileName))
+        {
+          bool result = GetWebClientBinaries(url, finalFileName);
+          //string messageToDisplay = $"The file has {NegateIfNeeded(result)}been downloaded correctly";
+          //string titleToDisplay = $"Download {NegateIfNeeded(result)}ok";
+          //DisplayMessage(messageToDisplay, titleToDisplay, MessageBoxButtons.OK);
+        }
+
+        //unziping the zip file only if it exists
+        if (File.Exists(finalFileName))
+        {
+          bool resultUnzip = UnzipFile(finalFileName, new DirectoryInfo(finalFileName));
+        }
+      }      
     }
 
     private static bool UnzipFile(string zipFileName, DirectoryInfo directory)
@@ -754,15 +757,13 @@ namespace GetPrimeFiles
       bool result = false;
       try
       {
-        string zipToUnpack = "C1P3SML.zip";
-        string unpackDirectory = "Extracted Files";
         using (ZipFile zip1 = ZipFile.Read(zipFileName))
         {
           // here, we extract every entry, but we could extract conditionally
           // based on entry name, size, date, checkbox status, etc.  
           foreach (ZipEntry file in zip1)
           {
-            file.Extract(directory.Name, ExtractExistingFileAction.OverwriteSilently);
+            file.Extract(".", ExtractExistingFileAction.OverwriteSilently);
           }
         }
 
