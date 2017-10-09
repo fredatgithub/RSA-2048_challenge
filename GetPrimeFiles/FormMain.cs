@@ -718,14 +718,25 @@ namespace GetPrimeFiles
       //download and unzip
       string extensionName = ".zip";
       string fileNameNumbered = "primes";
-      string finalFileName = $"{fileNameNumbered}1{extensionName}";
+      // for loop to insert here
+      int i = 1;
+      string finalFileName = $"{fileNameNumbered}{i}{extensionName}";
       string url = $"https://primes.utm.edu/lists/small/millions/{finalFileName}";
-      bool result = GetWebClientBinaries(url, finalFileName);
-      string messageToDisplay = $"The file has {NegateIfNeeded(result)}been downloaded correctly";
-      string titleToDisplay = $"Download {NegateIfNeeded(result)}ok";
-      DisplayMessage(messageToDisplay, titleToDisplay, MessageBoxButtons.OK);
+      //test if file doesn't already exist
+      if (!File.Exists(finalFileName))
+      {
+        bool result = GetWebClientBinaries(url, finalFileName);
+        string messageToDisplay = $"The file has {NegateIfNeeded(result)}been downloaded correctly";
+        string titleToDisplay = $"Download {NegateIfNeeded(result)}ok";
+        DisplayMessage(messageToDisplay, titleToDisplay, MessageBoxButtons.OK);
+      }
+      
       //unziping
-      bool resultUnzip = UnzipFile();
+      if (File.Exists(finalFileName))
+      {
+        bool resultUnzip = UnzipFile(finalFileName, new DirectoryInfo(finalFileName));
+      }
+      
     }
 
     private static bool UnzipFile(string zipFileName, DirectoryInfo directory)
