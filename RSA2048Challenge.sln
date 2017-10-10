@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSA2048Challenge", "RSA2048
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetPrimeFiles", "GetPrimeFiles\GetPrimeFiles.csproj", "{997A9B8C-8ADE-4A2C-83E1-2FB22955B334}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestGetPrimeFiles", "UnitTestGetPrimeFiles\UnitTestGetPrimeFiles.csproj", "{1AB00039-A1A2-4FE7-8F19-BE69FD55CE9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{997A9B8C-8ADE-4A2C-83E1-2FB22955B334}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{997A9B8C-8ADE-4A2C-83E1-2FB22955B334}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{997A9B8C-8ADE-4A2C-83E1-2FB22955B334}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AB00039-A1A2-4FE7-8F19-BE69FD55CE9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AB00039-A1A2-4FE7-8F19-BE69FD55CE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AB00039-A1A2-4FE7-8F19-BE69FD55CE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AB00039-A1A2-4FE7-8F19-BE69FD55CE9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

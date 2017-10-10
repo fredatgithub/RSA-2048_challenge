@@ -85,7 +85,7 @@
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
       this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-      this.menuStrip1.Size = new System.Drawing.Size(1138, 28);
+      this.menuStrip1.Size = new System.Drawing.Size(1058, 28);
       this.menuStrip1.TabIndex = 1;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -399,7 +399,7 @@
       // 
       this.buttonProcessFiles.Location = new System.Drawing.Point(908, 76);
       this.buttonProcessFiles.Name = "buttonProcessFiles";
-      this.buttonProcessFiles.Size = new System.Drawing.Size(97, 32);
+      this.buttonProcessFiles.Size = new System.Drawing.Size(111, 32);
       this.buttonProcessFiles.TabIndex = 5;
       this.buttonProcessFiles.Text = "Process Files";
       this.buttonProcessFiles.UseVisualStyleBackColor = true;
@@ -409,7 +409,7 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1138, 209);
+      this.ClientSize = new System.Drawing.Size(1058, 166);
       this.Controls.Add(this.buttonProcessFiles);
       this.Controls.Add(this.buttonGetFiles);
       this.Controls.Add(this.textBoxUrl);

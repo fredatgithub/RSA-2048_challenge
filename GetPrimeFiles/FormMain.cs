@@ -863,7 +863,19 @@ namespace GetPrimeFiles
         }
 
         // parsing filecontent
+        for (int index = 0; index < listOfPrimes.Count; index++)
+        {
+          listOfPrimes[index] = listOfPrimes[index].Replace(" ", ",");
+        }
 
+        string tmpPrimeList = string.Concat(listOfPrimes.ToArray()); 
+
+        while (tmpPrimeList.Contains(",,"))
+        {
+          tmpPrimeList = tmpPrimeList.Replace(",,", ",");
+        }
+
+        tmpPrimeList = tmpPrimeList.Trim(',');
       }
     }
   }
