@@ -891,7 +891,7 @@ namespace GetPrimeFiles
       }
     }
 
-    public static string AddToName(string fileName)
+    private static string AddToName(string fileName)
     {
       if (fileName == string.Empty)
       {
