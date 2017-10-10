@@ -13,5 +13,14 @@ namespace UnitTestGetPrimeFiles
       string result = source.Trim(',');
       Assert.AreEqual(result, expected);
     }
+
+    [TestMethod]
+    public void TestMethod_Add_To_Name()
+    {
+      const string source = "primes1.txt";
+      const string expected = "primes1-Lined.txt";
+      string result = GetPrimeFiles.FormMain.AddToName(source);
+      Assert.AreEqual(result, expected);
+    }
   }
 }

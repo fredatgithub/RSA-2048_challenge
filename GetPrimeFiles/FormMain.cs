@@ -739,7 +739,7 @@ namespace GetPrimeFiles
         {
           bool resultUnzip = UnzipFile(finalFileName, new DirectoryInfo(finalFileName));
         }
-      }      
+      }
     }
 
     private static bool UnzipFile(string zipFileName, DirectoryInfo directory)
@@ -827,29 +827,20 @@ namespace GetPrimeFiles
     private void buttonProcessFiles_Click(object sender, EventArgs e)
     {
       // remove header The First 1,000,000 Primes (from primes.utm.edu)
-      string prefixFileName = "primes";
-      string suffixFileName = ".txt";
-      //for (int i = 1; i < 51; i++)
-      //{
-        
-      //}
-      int i = 1;
-      string fileName = $"{prefixFileName}{i}{suffixFileName}";
-      string fileContent = string.Empty;
-      List<string> listOfPrimes = new List<string>();
-      if (File.Exists(fileName))
+      const string prefixFileName = "primes";
+      const string suffixFileName = ".txt";
+      for (int i = 1; i < 51; i++)
       {
+        string fileName = $"{prefixFileName}{i}{suffixFileName}";
+        List<string> listOfPrimes = new List<string>();
+        if (!File.Exists(fileName)) return;
         try
         {
-          //using (StreamReader sr = new StreamReader(fileName))
-          //{
-          //  fileContent = sr.ReadToEnd();
-          //}
           var sr = new StreamReader(fileName);
           while (!sr.EndOfStream)
           {
             string tmpLine = sr.ReadLine();
-            if (!tmpLine.Contains("primes") && tmpLine != string.Empty)
+            if (tmpLine != null && !tmpLine.Contains("primes") && tmpLine != string.Empty)
             {
               listOfPrimes.Add(tmpLine);
             }
@@ -868,7 +859,7 @@ namespace GetPrimeFiles
           listOfPrimes[index] = listOfPrimes[index].Replace(" ", ",");
         }
 
-        string tmpPrimeList = string.Concat(listOfPrimes.ToArray()); 
+        string tmpPrimeList = string.Concat(listOfPrimes.ToArray());
 
         while (tmpPrimeList.Contains(",,"))
         {
@@ -877,29 +868,39 @@ namespace GetPrimeFiles
 
         tmpPrimeList = tmpPrimeList.Trim(',');
         string[] tmpPrimeList2 = tmpPrimeList.Split(',');
-        StreamWriter sw = new StreamWriter(fileName, false);
+        tmpPrimeList = null;
+        string fileName2 = AddToName(fileName);
+        StreamWriter sw = new StreamWriter(fileName2, false);
         try
         {
           foreach (string number in tmpPrimeList2)
           {
             sw.WriteLine(number);
           }
-
-          sw.Close();
         }
         catch (Exception exception)
         {
           DisplayMessage(
-            $"There was an error while trying to write the file : {fileName}. The exception is {exception.Message}",
+            $"There was an error while trying to write the file : {fileName2}. The exception is {exception.Message}",
             "Error", MessageBoxButtons.OK);
         }
         finally
         {
           sw.Close();
         }
-
-
       }
+    }
+
+    public static string AddToName(string fileName)
+    {
+      if (fileName == string.Empty)
+      {
+        return string.Empty;
+      }
+
+      string result = string.Empty;
+      result = fileName.Substring(0, fileName.IndexOf('.')) + "-Lined" + fileName.Substring(fileName.IndexOf('.'));
+      return result;
     }
   }
 }
