@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetPrimeFiles", "GetPrimeFi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestGetPrimeFiles", "UnitTestGetPrimeFiles\UnitTestGetPrimeFiles.csproj", "{1AB00039-A1A2-4FE7-8F19-BE69FD55CE9B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigIntDemo", "BigIntDemo\BigIntDemo.csproj", "{FE3B20DB-E53F-4C22-BAC0-437BE53B6E7A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1AB00039-A1A2-4FE7-8F19-BE69FD55CE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AB00039-A1A2-4FE7-8F19-BE69FD55CE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AB00039-A1A2-4FE7-8F19-BE69FD55CE9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE3B20DB-E53F-4C22-BAC0-437BE53B6E7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE3B20DB-E53F-4C22-BAC0-437BE53B6E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE3B20DB-E53F-4C22-BAC0-437BE53B6E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE3B20DB-E53F-4C22-BAC0-437BE53B6E7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

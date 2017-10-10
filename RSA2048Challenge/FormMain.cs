@@ -1,23 +1,4 @@
-﻿/*
-The MIT License(MIT)
-Copyright(c) 2015 Freddy Juhel
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
-#define DEBUG
+﻿#define DEBUG
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -41,7 +22,8 @@ namespace RSA2048Challenge
     public readonly Dictionary<string, string> _languageDicoFr = new Dictionary<string, string>();
     private string _currentLanguage = "english";
     private ConfigurationOptions _configurationOptions = new ConfigurationOptions();
-
+    private string rsa2048 = "25 195 908 475 657 893 494 027 183 240 048 398 571 429 282 126 204 032 027 777 137 836 043 662 020 707 595 556 264 018 525 880 784 406 918 290 641 249 515 082 189 298 559 149 176 184 502 808 489 120 072 844 992 687 392 807 287 776 735 971 418 347 270 261 896 375 014 971 824 691 165 077 613 379 859 095 700 097 330 459 748 808 428 401 797 429 100 642 458 691 817 195 118 746 121 515 172 654 632 282 216 869 987 549 182 422 433 637 259 085 141 865 462 043 576 798 423 387 184 774 447 920 739 934 236 584 823 824 281 198 163 815 010 674 810 451 660 377 306 056 201 619 676 256 133 844 143 603 833 904 414 952 634 432 190 114 657 544 454 178 424 020 924 616 515 723 350 778 707 749 817 125 772 467 962 926 386 356 373 289 912 154 831 438 167 899 885 040 445 364 023 527 381 951 378 636 564 391 212 010 397 122 822 120 720 357";
+    
     private void QuitToolStripMenuItemClick(object sender, EventArgs e)
     {
       SaveWindowValue();
@@ -58,8 +40,7 @@ namespace RSA2048Challenge
     {
       Assembly assembly = Assembly.GetExecutingAssembly();
       FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
-      Text += string.Format(" V{0}.{1}.{2}.{3}", fvi.FileMajorPart, fvi.FileMinorPart, fvi.FileBuildPart,
-        fvi.FilePrivatePart);
+      Text += $" V{fvi.FileMajorPart}.{fvi.FileMinorPart}.{fvi.FileBuildPart}.{fvi.FilePrivatePart}";
     }
 
     private void FormMainLoad(object sender, EventArgs e)
@@ -69,6 +50,7 @@ namespace RSA2048Challenge
 
     private void LoadSettingsAtStartup()
     {
+      rsa2048 = rsa2048.Replace(" ", string.Empty);
       DisplayTitle();
       GetWindowValue();
       LoadLanguages();

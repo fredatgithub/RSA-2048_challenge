@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,13 +67,15 @@
       this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
       this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.tabControlMain = new System.Windows.Forms.TabControl();
-      this.tabPageNumberLength = new System.Windows.Forms.TabPage();
-      this.tabPage2 = new System.Windows.Forms.TabPage();
       this.tabPageRSA2048 = new System.Windows.Forms.TabPage();
       this.textBoxRSA2048 = new System.Windows.Forms.TextBox();
+      this.tabPageNumberLength = new System.Windows.Forms.TabPage();
+      this.tabPage2 = new System.Windows.Forms.TabPage();
+      this.textBoxNumberLength = new System.Windows.Forms.TextBox();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
       this.tabPageRSA2048.SuspendLayout();
+      this.tabPageNumberLength.SuspendLayout();
       this.SuspendLayout();
       // 
       // menuStrip1
@@ -382,26 +385,6 @@
       this.tabControlMain.Size = new System.Drawing.Size(788, 406);
       this.tabControlMain.TabIndex = 2;
       // 
-      // tabPageNumberLength
-      // 
-      this.tabPageNumberLength.Location = new System.Drawing.Point(4, 25);
-      this.tabPageNumberLength.Name = "tabPageNumberLength";
-      this.tabPageNumberLength.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPageNumberLength.Size = new System.Drawing.Size(780, 377);
-      this.tabPageNumberLength.TabIndex = 0;
-      this.tabPageNumberLength.Text = "Longueur Nombre";
-      this.tabPageNumberLength.UseVisualStyleBackColor = true;
-      // 
-      // tabPage2
-      // 
-      this.tabPage2.Location = new System.Drawing.Point(4, 25);
-      this.tabPage2.Name = "tabPage2";
-      this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage2.Size = new System.Drawing.Size(780, 377);
-      this.tabPage2.TabIndex = 1;
-      this.tabPage2.Text = "tabPage2";
-      this.tabPage2.UseVisualStyleBackColor = true;
-      // 
       // tabPageRSA2048
       // 
       this.tabPageRSA2048.Controls.Add(this.textBoxRSA2048);
@@ -420,6 +403,38 @@
       this.textBoxRSA2048.Name = "textBoxRSA2048";
       this.textBoxRSA2048.Size = new System.Drawing.Size(780, 377);
       this.textBoxRSA2048.TabIndex = 0;
+      this.textBoxRSA2048.Text = resources.GetString("textBoxRSA2048.Text");
+      // 
+      // tabPageNumberLength
+      // 
+      this.tabPageNumberLength.Controls.Add(this.textBoxNumberLength);
+      this.tabPageNumberLength.Location = new System.Drawing.Point(4, 25);
+      this.tabPageNumberLength.Name = "tabPageNumberLength";
+      this.tabPageNumberLength.Padding = new System.Windows.Forms.Padding(3);
+      this.tabPageNumberLength.Size = new System.Drawing.Size(780, 377);
+      this.tabPageNumberLength.TabIndex = 0;
+      this.tabPageNumberLength.Text = "Longueur Nombre";
+      this.tabPageNumberLength.UseVisualStyleBackColor = true;
+      // 
+      // tabPage2
+      // 
+      this.tabPage2.Location = new System.Drawing.Point(4, 25);
+      this.tabPage2.Name = "tabPage2";
+      this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+      this.tabPage2.Size = new System.Drawing.Size(780, 377);
+      this.tabPage2.TabIndex = 1;
+      this.tabPage2.Text = "tabPage2";
+      this.tabPage2.UseVisualStyleBackColor = true;
+      // 
+      // textBoxNumberLength
+      // 
+      this.textBoxNumberLength.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.textBoxNumberLength.Location = new System.Drawing.Point(3, 3);
+      this.textBoxNumberLength.Multiline = true;
+      this.textBoxNumberLength.Name = "textBoxNumberLength";
+      this.textBoxNumberLength.Size = new System.Drawing.Size(774, 371);
+      this.textBoxNumberLength.TabIndex = 0;
+      this.textBoxNumberLength.Text = "617";
       // 
       // FormMain
       // 
@@ -440,6 +455,8 @@
       this.tabControlMain.ResumeLayout(false);
       this.tabPageRSA2048.ResumeLayout(false);
       this.tabPageRSA2048.PerformLayout();
+      this.tabPageNumberLength.ResumeLayout(false);
+      this.tabPageNumberLength.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -489,5 +506,6 @@
     private System.Windows.Forms.TextBox textBoxRSA2048;
     private System.Windows.Forms.TabPage tabPageNumberLength;
     private System.Windows.Forms.TabPage tabPage2;
+    private System.Windows.Forms.TextBox textBoxNumberLength;
   }
 }
