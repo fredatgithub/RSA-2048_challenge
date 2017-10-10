@@ -876,6 +876,29 @@ namespace GetPrimeFiles
         }
 
         tmpPrimeList = tmpPrimeList.Trim(',');
+        string[] tmpPrimeList2 = tmpPrimeList.Split(',');
+        StreamWriter sw = new StreamWriter(fileName, false);
+        try
+        {
+          foreach (string number in tmpPrimeList2)
+          {
+            sw.WriteLine(number);
+          }
+
+          sw.Close();
+        }
+        catch (Exception exception)
+        {
+          DisplayMessage(
+            $"There was an error while trying to write the file : {fileName}. The exception is {exception.Message}",
+            "Error", MessageBoxButtons.OK);
+        }
+        finally
+        {
+          sw.Close();
+        }
+
+
       }
     }
   }
