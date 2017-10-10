@@ -68,6 +68,7 @@
       this.labelUrl = new System.Windows.Forms.Label();
       this.textBoxUrl = new System.Windows.Forms.TextBox();
       this.buttonGetFiles = new System.Windows.Forms.Button();
+      this.buttonProcessFiles = new System.Windows.Forms.Button();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -84,7 +85,7 @@
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
       this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-      this.menuStrip1.Size = new System.Drawing.Size(911, 28);
+      this.menuStrip1.Size = new System.Drawing.Size(1138, 28);
       this.menuStrip1.TabIndex = 1;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -394,11 +395,22 @@
       this.buttonGetFiles.UseVisualStyleBackColor = true;
       this.buttonGetFiles.Click += new System.EventHandler(this.buttonGetFiles_Click);
       // 
+      // buttonProcessFiles
+      // 
+      this.buttonProcessFiles.Location = new System.Drawing.Point(908, 76);
+      this.buttonProcessFiles.Name = "buttonProcessFiles";
+      this.buttonProcessFiles.Size = new System.Drawing.Size(97, 32);
+      this.buttonProcessFiles.TabIndex = 5;
+      this.buttonProcessFiles.Text = "Process Files";
+      this.buttonProcessFiles.UseVisualStyleBackColor = true;
+      this.buttonProcessFiles.Click += new System.EventHandler(this.buttonProcessFiles_Click);
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(911, 534);
+      this.ClientSize = new System.Drawing.Size(1138, 209);
+      this.Controls.Add(this.buttonProcessFiles);
       this.Controls.Add(this.buttonGetFiles);
       this.Controls.Add(this.textBoxUrl);
       this.Controls.Add(this.labelUrl);
@@ -459,5 +471,6 @@
     private System.Windows.Forms.Label labelUrl;
     private System.Windows.Forms.TextBox textBoxUrl;
     private System.Windows.Forms.Button buttonGetFiles;
+    private System.Windows.Forms.Button buttonProcessFiles;
   }
 }

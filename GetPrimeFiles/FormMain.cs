@@ -823,5 +823,48 @@ namespace GetPrimeFiles
         return false;
       }
     }
+
+    private void buttonProcessFiles_Click(object sender, EventArgs e)
+    {
+      // remove header The First 1,000,000 Primes (from primes.utm.edu)
+      string prefixFileName = "primes";
+      string suffixFileName = ".txt";
+      //for (int i = 1; i < 51; i++)
+      //{
+        
+      //}
+      int i = 1;
+      string fileName = $"{prefixFileName}{i}{suffixFileName}";
+      string fileContent = string.Empty;
+      List<string> listOfPrimes = new List<string>();
+      if (File.Exists(fileName))
+      {
+        try
+        {
+          //using (StreamReader sr = new StreamReader(fileName))
+          //{
+          //  fileContent = sr.ReadToEnd();
+          //}
+          var sr = new StreamReader(fileName);
+          while (!sr.EndOfStream)
+          {
+            string tmpLine = sr.ReadLine();
+            if (!tmpLine.Contains("primes") && tmpLine != string.Empty)
+            {
+              listOfPrimes.Add(tmpLine);
+            }
+          }
+
+          sr.Close();
+        }
+        catch (Exception exception)
+        {
+          DisplayMessage($"There was an error while trying to read the file : {fileName}. The exception is {exception.Message}", "Error", MessageBoxButtons.OK);
+        }
+
+        // parsing filecontent
+
+      }
+    }
   }
 }
