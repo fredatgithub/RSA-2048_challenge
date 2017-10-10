@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.CodeDom;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestGetPrimeFiles
 {
@@ -14,13 +15,14 @@ namespace UnitTestGetPrimeFiles
       Assert.AreEqual(result, expected);
     }
 
-    [TestMethod()]
+    [TestMethod]
     public void TestMethod_Add_To_Name()
     {
       PrivateType privateTypeObject = new PrivateType(typeof(GetPrimeFiles.FormMain));
+      const string methodName = "AddToName";
       const string source = "primes1.txt";
       const string expected = "primes1-Lined.txt";
-      object obj = privateTypeObject.InvokeStatic("AddToName", source);
+      object obj = privateTypeObject.InvokeStatic(methodName, source);
       Assert.AreEqual(expected, (string)obj);
     }
   }
