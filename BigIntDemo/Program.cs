@@ -48,13 +48,19 @@ namespace BigIntDemo
           e.ActualValue, e.ParamName);
       }
 
+      BigInteger number = BigInteger.Pow(ulong.MaxValue, 3);
+      display($"The ulong max value to the power of 3 is {number}");
+      number = BigInteger.Pow(ulong.MaxValue, int.MaxValue);
+      display($"The ulong max value to the power of int max value is {number}");
+
       //searching for factors
       for (BigInteger i = 2; i < 10; i++)
       {
         display($"The factors of {i} are {ListFactors(Factors(i))}");
       }
 
-      display($"The factors of RSA2048 are {ListFactors(Factors(rsa2048))}");
+      //too long to run on a laptop, run it on a VM
+      //display($"The factors of RSA2048 are {ListFactors(Factors(rsa2048))}");
 
       display(string.Empty);
       display("Press any key to exit:");
@@ -95,7 +101,8 @@ namespace BigIntDemo
 
       for (BigInteger i = 3; i <= bigInt; i++)
       {
-        Console.WriteLine(i);
+        // to debug, uncomment following line
+        //Console.WriteLine(i);
         if (bigInt % i == 0)
         {
           result.Add(i);
