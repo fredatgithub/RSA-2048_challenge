@@ -50,8 +50,9 @@ namespace BigIntDemo
 
       BigInteger number = BigInteger.Pow(ulong.MaxValue, 3);
       display($"The ulong max value to the power of 3 is {number}");
-      number = BigInteger.Pow(ulong.MaxValue, int.MaxValue);
-      display($"The ulong max value to the power of int max value is {number}");
+      // too long and may have an exception
+      //number = BigInteger.Pow(ulong.MaxValue, int.MaxValue);
+      //display($"The ulong max value to the power of int max value is {number}");
 
       //searching for factors
       for (BigInteger i = 2; i < 10; i++)
