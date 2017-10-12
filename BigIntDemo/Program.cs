@@ -62,7 +62,11 @@ namespace BigIntDemo
 
       //too long to run on a laptop, run it on a VM
       //display($"The factors of RSA2048 are {ListFactors(Factors(rsa2048))}");
+      BigInteger b1 = 961748947;
+      BigInteger b2 = 961748941;
 
+      BigInteger tmpUlong = b1 * b2;
+      display($"{tmpUlong}");
       display(string.Empty);
       display("Press any key to exit:");
       Console.ReadKey();
