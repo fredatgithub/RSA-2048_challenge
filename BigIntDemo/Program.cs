@@ -98,6 +98,35 @@ namespace BigIntDemo
         display($"no divisor was found");
       }
 
+      string ThreeHundredDigits = "1";
+      for (int i = 1; i < 299; i++)
+      {
+        ThreeHundredDigits += "0";
+      }
+
+      ThreeHundredDigits += "1";
+      display($"ThreeHundredDigits has {ThreeHundredDigits.Length} digits");
+
+      b1 = BigInteger.Parse(ThreeHundredDigits);
+      divisorfound = false;
+      display("Searching for divisor for RSA 2048");
+      display($"starting with {b1}");
+      display(string.Empty);
+      for (int i = 1; i < 3000000; i = i + 2)
+      {
+        b1 += i;
+        if (rsa2048 % b1 == 0)
+        {
+          display($"{b1} divise RSA 2048 par {rsa2048 / b1}");
+          divisorfound = true;
+          break;
+        }
+      }
+
+      if (!divisorfound)
+      {
+        display($"no divisor was found");
+      }
       display(string.Empty);
       display("Press any key to exit:");
       Console.ReadKey();
