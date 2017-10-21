@@ -66,6 +66,11 @@ namespace BigIntDemo
 
       BigInteger tmpUlong = b1 * b2;
       display($"{tmpUlong}");
+      if (tmpUlong % b2 == 0)
+      {
+        display($"{tmpUlong} est divisible par {b2} et {tmpUlong / b2}");
+      }
+
       display(string.Empty);
       display("Press any key to exit:");
       Console.ReadKey();
