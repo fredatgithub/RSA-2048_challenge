@@ -112,15 +112,17 @@ namespace BigIntDemo
       display("Searching for divisor for RSA 2048");
       display($"starting with {b1}");
       display(string.Empty);
-      for (int i = 1; i < 3000000; i = i + 2)
+      for (int i = 1; i < 30000; i = i + 1)
       {
-        b1 += i;
+        b1 += 2;
         if (rsa2048 % b1 == 0)
         {
           display($"{b1} divise RSA 2048 par {rsa2048 / b1}");
           divisorfound = true;
           break;
         }
+
+        display($"{b1}");
       }
 
       if (!divisorfound)
