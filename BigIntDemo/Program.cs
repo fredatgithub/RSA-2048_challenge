@@ -72,6 +72,33 @@ namespace BigIntDemo
       }
 
       display(string.Empty);
+      b1 =  BigInteger.Parse("2519590847565789349402718324004839857142928212620403202777713783604366202070759555626401852588078440691829064124951508218929855914917618450280848912007284499268739280728777673597141834727026189637501497182469116507761337985909570009733045974880842840179742910064245869181719511874612151517265463228221");
+        
+      b2 = BigInteger.Parse("6869987549182422433637259085141865462043576798423387184774447920739934236584823824281198163815010674810451660377306056201619676256133844143603833904414952634432190114657544454178424020924616515723350778707749817125772467962926386356373289912154831438167899885040445364023527381951378636564391212010397122822120720357");
+      BigInteger b3 = b1 * b2;
+      display($"{b1} {Environment.NewLine}multiplié par {Environment.NewLine}{b2}{Environment.NewLine} égal {Environment.NewLine}{b3}");
+      display(string.Empty);
+      display($"La longeur {b1.ToString().Length} multiplié par la longeur {b2.ToString().Length} égal à la longeur {b3.ToString().Length}");
+
+      display(string.Empty);
+      bool divisorfound = false;
+      for (int i = 1; i < 3000; i = i+2)
+      {
+        b1 += i;
+        if (rsa2048 % b1 == 0)
+        {
+          display($"{b1} divise RSA 2048 par {rsa2048 / b1}");
+          divisorfound = true;
+          break;
+        }
+      }
+
+      if (!divisorfound)
+      {
+        display($"no divisor was found");
+      }
+
+      display(string.Empty);
       display("Press any key to exit:");
       Console.ReadKey();
     }
